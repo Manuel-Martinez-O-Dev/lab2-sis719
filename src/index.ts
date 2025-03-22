@@ -1,6 +1,6 @@
 
 import { fetchPokemon } from './pokemon.js';
-import { renderPokemon } from './ui.js';
+import { renderPokemon, getLastSearchedPokemon, renderHistory } from './ui.js';
 
 const input = document.getElementById('searchInput') as HTMLInputElement;
 const button = document.getElementById('searchBtn') as HTMLButtonElement;
@@ -8,8 +8,11 @@ const button = document.getElementById('searchBtn') as HTMLButtonElement;
 const siguiente = document.getElementById('nextBtn') as HTMLButtonElement;
 const anterior = document.getElementById('prevBtn') as HTMLButtonElement;
 
+const historyDiv = document.createElement('history');
+
 const resultDiv = document.getElementById('result')!;
 
+resultDiv.before(historyDiv);
 resultDiv.before(anterior, siguiente);
 
 let currentPokemonId: number | null = null;
@@ -32,7 +35,7 @@ siguiente.addEventListener('click', () => {
   }
 });
 
-async function searchPokemon(name: string) {
+export async function searchPokemon(name: string) {
   resultDiv.innerHTML = "🔄 Buscando...";
   try {
     const pokemon = await fetchPokemon(name);
@@ -43,4 +46,9 @@ async function searchPokemon(name: string) {
   }
 }
 
+const lastPokemon = getLastSearchedPokemon();
+if (lastPokemon) {
+  searchPokemon(lastPokemon);
+}
 
+renderHistory();

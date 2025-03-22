@@ -10,3 +10,10 @@ body {
   margin: 0.5rem;
 }
 
+#history {
+  margin: auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+} 
+
