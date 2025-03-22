@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {    
+    "target": "ES6",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "ES6",
+    "outDir": "./dist",
+    "rootDir": "./src",                                /* Specify what module code is generated. */
+    "esModuleInterop": true,                       /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "strict": true                                      /* Enable all strict type-checking options. */
+  },
+  "exclude": ["vite.config.ts"]
+}
